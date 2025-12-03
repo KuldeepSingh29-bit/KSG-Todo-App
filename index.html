@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSG-Todo App </title>
+    <meta name="description"
+        content="A feature-rich todo application with local storage, filtering, priority levels, and drag-and-drop functionality">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/a2fa536777.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+           <h3> <b>KSG-Todo App</b> </h3>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <a href="https://github.com/KuldeepSingh29-bit/KSG-todo" target="_blank" class="github-link"
+                aria-label="View on GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="mainContainer">
+        <!-- Header -->
+        <header>
+            <h1>
+                <span class="gradient-text">My Tasks</span>
+            </h1>
+
+            <!-- Task Input Form -->
+            <div class="inputContainer">
+                <div class="input-group">
+                    <input type="text" name="taskInput" id="taskInput" placeholder="What needs to be done?"
+                        autocomplete="off">
+
+                    <div class="task-options">
+                        <!-- Priority Selector -->
+                        <div class="priority-selector">
+                            <label for="prioritySelect">
+                                <i class="fa-solid fa-flag"></i>
+                            </label>
+                            <select id="prioritySelect" aria-label="Task priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <!-- Due Date Picker -->
+                        <div class="date-picker">
+                            <label for="dueDateInput">
+                                <i class="fa-solid fa-calendar"></i>
+                            </label>
+                            <input type="datetime-local" id="dueDateInput" aria-label="Due date">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="addBtn" id="addBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Add Task</span>
+                </button>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">
+                    All <span class="count" id="allCount">0</span>
+                </button>
+                <button class="filter-tab" data-filter="active">
+                    Active <span class="count" id="activeCount">0</span>
+                </button>
+                <button class="filter-tab" data-filter="completed">
+                    Completed <span class="count" id="completedCount">0</span>
+                </button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="clear-completed" id="clearCompleted">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Clear Completed
+                </button>
+                <button class="sort-btn" id="sortBtn">
+                    <i class="fa-solid fa-arrow-down-short-wide"></i>
+                    Sort by Priority
+                </button>
+            </div>
+        </header>
+
+        <!-- Task Statistics -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon total">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalTasks">0</span>
+                    <span class="stat-label">Total Tasks</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon pending">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon done">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="doneTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo List Container -->
+        <div class="todoContainer" id="todoContainer">
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <h3>No tasks yet!</h3>
+                <p>Add a task to get started on your productivity journey.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with <i class="fa-solid fa-heart"></i> by KSG | Drag & drop to reorder tasks</p>
+    </footer>
+</body>
+
+</html>
